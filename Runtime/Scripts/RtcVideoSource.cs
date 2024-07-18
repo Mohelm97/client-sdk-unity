@@ -164,7 +164,7 @@ namespace LiveKit
                 using var request = FFIBridge.Instance.NewRequest<CaptureVideoFrameRequest>();
                 var capture = request.request;
                 capture.SourceHandle = (ulong)Handle.DangerousGetHandle();
-                capture.Rotation = VideoRotation._0;
+                capture.Rotation = VideoRotation._180;
                 capture.TimestampUs = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 capture.Buffer = buffer;
                 using var response = request.Send();
