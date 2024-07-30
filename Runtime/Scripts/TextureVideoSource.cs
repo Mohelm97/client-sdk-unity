@@ -22,9 +22,10 @@ namespace LiveKit
             return Texture.height;
         }
 
-        public TextureVideoSource(Texture texture, VideoBufferType bufferType = VideoBufferType.Rgba) : base(VideoStreamSource.Texture, bufferType)
+        public TextureVideoSource(Texture texture, VideoRotation rotation = VideoRotation._0, VideoBufferType bufferType = VideoBufferType.Rgba) : base(VideoStreamSource.Texture, bufferType)
         {
             Texture = texture;
+            this.rotation = rotation;
             base.Init();
         }
 

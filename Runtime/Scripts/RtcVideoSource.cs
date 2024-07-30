@@ -35,6 +35,7 @@ namespace LiveKit
         protected bool _requestPending = false;
         protected bool isDisposed = true;
         protected bool _playing = false;
+        protected VideoRotation rotation = VideoRotation._0;
 
         internal RtcVideoSource(VideoStreamSource sourceType, VideoBufferType bufferType)
         {
@@ -164,7 +165,7 @@ namespace LiveKit
                 using var request = FFIBridge.Instance.NewRequest<CaptureVideoFrameRequest>();
                 var capture = request.request;
                 capture.SourceHandle = (ulong)Handle.DangerousGetHandle();
-                capture.Rotation = VideoRotation._180;
+                capture.Rotation = rotation;
                 capture.TimestampUs = DateTimeOffset.Now.ToUnixTimeMilliseconds();
                 capture.Buffer = buffer;
                 using var response = request.Send();
