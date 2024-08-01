@@ -132,8 +132,7 @@ namespace LiveKit
             using var request = FFIBridge.Instance.NewRequest<VideoConvertRequest>();
             var toRGBA = request.request;
             toRGBA.Buffer = Info;
-            if (UnityEngine.SystemInfo.graphicsUVStartsAtTop)
-                toRGBA.FlipY = true;
+            toRGBA.FlipY = true;
             toRGBA.DstType = VideoBufferType.Rgba;
 
             using var response = request.Send();
