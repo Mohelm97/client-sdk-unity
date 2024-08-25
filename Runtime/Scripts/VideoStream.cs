@@ -133,7 +133,9 @@ namespace LiveKit
 
             if (e.MessageCase != VideoStreamEvent.MessageOneofCase.FrameReceived)
                 return;
- 
+
+            if (e.FrameReceived.Rotation != VideoRotation._0)
+                return;
             var newBuffer = e.FrameReceived.Buffer;
             var handle = new FfiHandle((IntPtr)newBuffer.Handle.Id);
             var frameInfo = newBuffer.Info;
